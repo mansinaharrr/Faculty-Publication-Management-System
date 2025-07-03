@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Redirect GET requests to login page
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("dashboard.jsp");
     }
 
     /**

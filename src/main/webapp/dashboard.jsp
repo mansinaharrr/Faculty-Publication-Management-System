@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-// Check if user is logged in
-String userRole = (String) session.getAttribute("userRole");
-String username = (String) session.getAttribute("username");
+    // Check if user is logged in
+    String userRole = (String) session.getAttribute("role");
+    String username = (String) session.getAttribute("username");
 
-// If not logged in, redirect to login page
-if (userRole == null || username == null) {
-    response.sendRedirect("login.jsp");
-    return;
-}
+    // If not logged in, redirect to login page
+    if (userRole == null || username == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
 
-// Get faculty ID for faculty users
-String facultyId = (String) session.getAttribute("facultyId");
+    // Get faculty ID for faculty users
+    String facultyId = (String) session.getAttribute("facultyId");
 %>
 <!DOCTYPE html>
 <html>
@@ -78,20 +78,8 @@ String facultyId = (String) session.getAttribute("facultyId");
             font-size: 1.5rem;
         }
         .logo-img {
-            max-height: 50px; /* Adjust as needed */
+            max-height: 50px;
             margin-bottom: 1rem;
-        }
-        .user-info {
-            color: #667eea;
-            font-weight: 500;
-        }
-        .role-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -110,9 +98,7 @@ String facultyId = (String) session.getAttribute("facultyId");
                     <a class="nav-link active" href="dashboard.jsp">
                         <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                     </a>
-                    
                     <% if ("Admin".equals(userRole)) { %>
-                        <!-- Admin Navigation -->
                         <a class="nav-link" href="faculty.jsp">
                             <i class="fas fa-users me-2"></i>Faculty Members
                         </a>
@@ -135,7 +121,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                             <i class="fas fa-chart-bar me-2"></i>Reports
                         </a>
                     <% } else if ("Faculty".equals(userRole)) { %>
-                        <!-- Faculty Navigation -->
                         <a class="nav-link" href="publications.jsp">
                             <i class="fas fa-book me-2"></i>My Publications
                         </a>
@@ -146,7 +131,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                             <i class="fas fa-calendar-alt me-2"></i>Conferences
                         </a>
                     <% } else if ("Reviewer".equals(userRole)) { %>
-                        <!-- Reviewer Navigation -->
                         <a class="nav-link" href="reviews.jsp">
                             <i class="fas fa-clipboard-check me-2"></i>Review Publications
                         </a>
@@ -154,8 +138,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                             <i class="fas fa-book me-2"></i>Publications
                         </a>
                     <% } %>
-                    
-                    <!-- Logout Button in Sidebar -->
                     <a class="nav-link" href="logout.jsp">
                         <i class="fas fa-sign-out-alt me-2"></i>Logout
                     </a>
@@ -169,20 +151,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                     <div class="container-fluid">
                         <span class="navbar-brand">Faculty Publication Management System</span>
                         <div class="navbar-nav ms-auto">
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user-circle me-1"></i>
-                                    <span class="user-info"><%= username %></span>
-                                    <span class="role-badge ms-2"><%= userRole %></span>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="logout.jsp"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                                </ul>
-                            </div>
-                            <!-- Logout Button in Top Navigation -->
                             <a class="nav-link" href="logout.jsp">
                                 <i class="fas fa-sign-out-alt me-1"></i>Logout
                             </a>
@@ -205,7 +173,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                     <!-- Statistics Cards -->
                     <div class="row mb-4">
                         <% if ("Admin".equals(userRole)) { %>
-                            <!-- Admin sees all statistics -->
                             <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
                                 <div class="card stat-card">
                                     <div class="card-body">
@@ -222,7 +189,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 </div>
                             </div>
                         <% } %>
-                        
                         <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
                             <div class="card stat-card-2">
                                 <div class="card-body">
@@ -244,7 +210,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
                             <div class="card stat-card-3">
                                 <div class="card-body">
@@ -260,7 +225,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
                             <div class="card stat-card-4">
                                 <div class="card-body">
@@ -276,7 +240,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 </div>
                             </div>
                         </div>
-                        
                         <% if ("Admin".equals(userRole)) { %>
                             <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
                                 <div class="card stat-card-5">
@@ -350,7 +313,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-header">
@@ -361,7 +323,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                 <div class="card-body">
                                     <div class="d-grid gap-2">
                                         <% if ("Admin".equals(userRole)) { %>
-                                            <!-- Admin Quick Actions -->
                                             <a href="add_publication.jsp" class="btn btn-primary">
                                                 <i class="fas fa-plus me-2"></i>Add Publication
                                             </a>
@@ -378,7 +339,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                                 <i class="fas fa-clipboard-check me-2"></i>Review Publications
                                             </a>
                                         <% } else if ("Faculty".equals(userRole)) { %>
-                                            <!-- Faculty Quick Actions -->
                                             <a href="add_publication.jsp" class="btn btn-primary">
                                                 <i class="fas fa-plus me-2"></i>Add Publication
                                             </a>
@@ -392,7 +352,6 @@ String facultyId = (String) session.getAttribute("facultyId");
                                                 <i class="fas fa-calendar-alt me-2"></i>Browse Conferences
                                             </a>
                                         <% } else { %>
-                                            <!-- Reviewer Quick Actions -->
                                             <a href="reviews.jsp" class="btn btn-primary">
                                                 <i class="fas fa-clipboard-check me-2"></i>Review Publications
                                             </a>
@@ -409,7 +368,6 @@ String facultyId = (String) session.getAttribute("facultyId");
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

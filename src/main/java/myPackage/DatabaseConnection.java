@@ -35,6 +35,12 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         System.out.println("Connected to Faculty Publications Database successfully!");
     }
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        System.out.println("Connected to Faculty Publications Database successfully using getConnection!");
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        
+    }
     
     private static void insertSampleData() {
         try {

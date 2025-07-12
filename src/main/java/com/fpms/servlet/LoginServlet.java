@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String role = request.getParameter("role");
-        
+
         // Validate input
         if (username == null || password == null || role == null || 
             username.trim().isEmpty() || password.trim().isEmpty() || role.trim().isEmpty()) {
@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("userID", rs.getInt("UserID"));
                 session.setAttribute("username", rs.getString("Username"));
-                session.setAttribute("role", rs.getString("Role"));
+                session.setAttribute("userRole", rs.getString("Role"));
                 session.setAttribute("email", rs.getString("Email"));
                 session.setAttribute("isLoggedIn", true);
                 

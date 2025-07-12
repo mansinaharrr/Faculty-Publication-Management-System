@@ -101,7 +101,7 @@ String facultyId = (String) session.getAttribute("facultyId");
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 sidebar p-0">
                 <div class="p-3 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/SRM_Institute_of_Science_and_Technology_Logo.svg" alt="SRM Logo" class="logo-img">
+                    <img src="images/srm_logo.png" alt="SRM Logo" class="logo-img">
                     <h4 class="text-white text-center mb-4">
                         FPMS
                     </h4>
